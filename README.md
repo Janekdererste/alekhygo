@@ -15,3 +15,10 @@ To download all dependencies execute
 ```
 mvn clean install
 ```
+
+### 3. Run The Application
+Go to 'Edit Run Configuration' -> click + -> choose Application ->
+Main class: com.janeklaudan.alekhygo.bootstrap.App
+Program arguments: server <path/to/resources/folder>/test-config.yml
+working directory: choose the project root
+JRE: 1.8 should work
