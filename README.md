@@ -11,11 +11,7 @@ File -> Settings. In the settings menu select Plugins -> Browse repositories. In
 the repository browser Search for 'lombok' and click 'install'.
 
 ### 2. Compile the project
-
-The project is also using [QueryDSL](http://www.querydsl.com/) for typesafe 
-queries against a database. The library relies on generated source code which,
-well, needs to be generated before the first run. To do so, simply execute
-
+To download all dependencies execute
 ```
-mvn clean compile
+mvn clean install
 ```
