@@ -1,7 +1,6 @@
 package com.janeklaudan.alekhygo.bootstrap;
 
 import com.bedatadriven.jackson.datatype.jts.JtsModule;
-import com.graphhopper.GraphHopper;
 import com.graphhopper.jackson.GraphHopperModule;
 import com.graphhopper.resources.I18NResource;
 import com.graphhopper.resources.InfoResource;
@@ -14,6 +13,7 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 import javax.servlet.DispatcherType;
+import java.nio.file.Paths;
 import java.util.EnumSet;
 
 public class App extends Application<AppConfigruation> {
@@ -22,7 +22,7 @@ public class App extends Application<AppConfigruation> {
         new App().run(args);
     }
 
-    private final GraphHopper graphHopper;
+    private final GraphhopperAlekhya graphHopper;
 
     public App() {
         this.graphHopper = new GraphhopperAlekhya();
@@ -38,13 +38,15 @@ public class App extends Application<AppConfigruation> {
     }
 
     @Override
-    public void run(AppConfigruation configuration, Environment environment) throws Exception {
+    public void run(AppConfigruation configuration, Environment environment) {
 
 
         this.graphHopper.setDataReaderFile(configuration.getOsmFile());
         this.graphHopper.setGraphHopperLocation(configuration.getTmpFiles());
         this.graphHopper.setEncodingManager(new EncodingManager("foot"));
         this.graphHopper.importOrLoad();
+        this.graphHopper.setGeoJsonfile(Paths.get(configuration.getGeoJsonFile()));
+        this.graphHopper.setObjectMapper(environment.getObjectMapper());
 
         RouteResource routing = new RouteResource(this.graphHopper, false);
         environment.jersey().register(routing);

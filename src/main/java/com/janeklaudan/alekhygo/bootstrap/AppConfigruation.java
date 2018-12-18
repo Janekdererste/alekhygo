@@ -12,7 +12,9 @@ import javax.validation.Valid;
 public class AppConfigruation extends Configuration implements AssetsBundleConfiguration {
 
     private String osmFile;
+    private String geoJsonFile;
     private String tmpFiles;
+
 
     @Valid
     @JsonProperty

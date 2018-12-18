@@ -5,5 +5,6 @@ server:
     # for security reasons bind to localhost
     bindHost: localhost
 
-osmFile: G:\Users\Janek\Downloads\berlin-latest.osm.pbf
-tmpFiles: G:\Users\Janek\ghTmpFiles
+osmFile: /path/to/osm-file.osm.pbf
+tmpFiles: /path/to/tmp/folder
+geoJsonFile: /path/to/geoJson/file.json
